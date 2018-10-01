@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class shuffler {
+public class Shuffler {
 
   public static void main(String[] args) {
     int[] deck = new int[52];
@@ -16,6 +16,13 @@ public class shuffler {
     System.out.println(Arrays.toString(deck));
     shuffle(deck);
     System.out.println(Arrays.toString(deck));
+
+    String[] names = {"Bashful", "Doc", "sleepy"};
+    System.out.println(Arrays.toString(names));
+    shuffle(names);
+    System.out.println(Arrays.toString(names));
+
+
   }
 
   public static void shuffle(int[] deck, Random rng) {
@@ -40,7 +47,6 @@ public class shuffler {
       deck[i] = temp;
 
     }
-
   }
 
   public static void shuffle(byte[] deck) {
@@ -56,7 +62,6 @@ public class shuffler {
       deck[i] = temp;
 
     }
-
   }
 
   public static void shuffle(char[] deck) {
@@ -72,7 +77,6 @@ public class shuffler {
       deck[i] = temp;
 
     }
-
   }
 
   public static void shuffle(double[] deck) {
@@ -87,7 +91,6 @@ public class shuffler {
       deck[i] = temp;
 
     }
-
   }
 
   public static void shuffle(float[] deck) {
@@ -102,7 +105,6 @@ public class shuffler {
       deck[i] = temp;
 
     }
-
   }
 
   public static void shuffle(long[] deck) {
@@ -117,10 +119,25 @@ public class shuffler {
       deck[i] = temp;
 
     }
-
   }
 
   public static void shuffle(short[] deck) {
+    shuffle(deck, new Random());
+  }
+
+  public static <T> void shuffle(T[] deck, Random rng) {
+    for (int i = deck.length - 1; i > 0; i--) {
+
+      int swap = rng.nextInt(i + 1);
+      T temp = deck[swap];
+      deck[swap] = deck[i];
+      deck[i] = temp;
+
+
+    }
+  }
+
+  public static <T> void shuffle(T[] deck) {
     shuffle(deck, new Random());
   }
 }
